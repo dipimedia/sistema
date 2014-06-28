@@ -1,0 +1,128 @@
+<div ng-init="inicio()" class="contenedor">
+	<section class="cabecera">
+        <h1>{{tituloAPR}}</h1>
+    </section>
+	<section class="cuerpo">
+		<div class="box box-primary">
+            <div class="box-header" data-toggle="tooltip" title="" data-original-title="Header tooltip">
+                <h3 class="box-title">Información</h3>
+            </div>
+            <div class="box-body">
+            <form name="userForm" ng-submit="guardar()" novalidate>
+            	<div class="row">
+	            	<div class="col-md-3">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.codigo.$invalid && !userForm.codigo.$pristine }">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+						  <input type="text" class="form-control" name="codigo" ng-model="datos.codigo" placeholder="Codigo" mayusculas required>
+						</div>
+						<p ng-show="userForm.codigo.$invalid && !userForm.codigo.$pristine" class="help-block">El codigo es requerido.</p>
+	            	</div>
+	            	<div class="col-md-3">
+	            		<div class="input-group">
+						  <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+						  <input type="text" class="form-control" ng-model="datos.codigobarras" placeholder="Codigo de barras">
+						</div>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.provedor.$invalid && !userForm.provedor.$pristine }">
+						  <span class="input-group-addon"><i class="fa fa-desktop"></i></span>
+						  <input type="text" name="provedor" class="form-control" ng-model="datos.provedor" placeholder="Provedor" required>
+						</div>
+						<p ng-show="userForm.provedor.$invalid && !userForm.provedor.$pristine" class="help-block">Provedor es requerido.</p>
+						<ul class="list-group" ng-show="datos.provedor.lenght > 0">
+				  			<li class="list-group-item" ng-click=" datos.provedor = provedor.nombre; datos.idprovedor = provedor.id; " ng-repeat=" provedor in provedores | filter: producto.provedor |limitTo:8 ">{{ provedor.nombre }}</li>
+				  		</ul>
+				</ul>
+	            	</div>
+	            </div>
+				<br>
+				<div class="row">
+	            	
+	            	<div class="col-md-3">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.costo.$invalid && !userForm.costo.$pristine }">
+						  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+						  <input type="text" name="costo" class="form-control" ng-model="datos.costo" placeholder="Precio Costo" decimales required>
+						</div>
+						<p ng-show="userForm.costo.$invalid && !userForm.costo.$pristine" class="help-block">Costo es requerido.</p>
+	            	</div>
+	            	<div class="col-md-3">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.venta.$invalid && !userForm.venta.$pristine }">
+						  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+						  <input type="text" name="venta" class="form-control" ng-model="datos.venta" placeholder="Precio Venta" decimales required>
+						</div>
+						<p ng-show="userForm.venta.$invalid && !userForm.venta.$pristine" class="help-block">Venta es requerido.</p>
+	            	</div>
+	            	<div class="col-md-3">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.cantidad.$invalid && !userForm.cantidad.$pristine }">
+						  <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+						  <input type="text" name="cantidad" class="form-control" ng-model="datos.cantidad" placeholder="En Existencia" numeros required>
+						</div>
+						<p ng-show="userForm.cantidad.$invalid && !userForm.cantidad.$pristine" class="help-block">Cantidad es requerido.</p>
+	            	</div>
+	            </div>
+				<br>
+	            <div class="row">
+	            	<div class="col-md-6">
+	            		<div class="input-group" ng-class="{ 'has-error' : userForm.descripcionexpress.$invalid && !userForm.descripcionexpress.$pristine }">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+						  <input type="text" class="form-control" name="descripcionexpress" ng-model="datos.descripcionexpress" placeholder="Descripción Corta" mayusculas required>
+						</div>
+						<p ng-show="userForm.descripcionexpress.$invalid && !userForm.descripcionexpress.$pristine" class="help-block">Descripción corta es requerida.</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<textarea class="form-control" ng-model="datos.descripcion" placeholder="Descripción" rows="3" mayusculas></textarea>
+	            	</div>
+	            </div>
+	            <div class="row">
+					<div class="col-md-6 col-sm-6">
+							<input type="file" ng-file-select="onFileSelect($files)" >
+							<div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="arrastra">Arrastra imagen(es) del producto aqui</div>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="subidas" ng-show="subiendo" >
+							<p>Subiendo {{ img }} de {{ totalimg }}</p>
+							<div ang:round:progress data-round-progress-model="roundProgressData"
+	                            data-round-progress-width="400"
+	                            data-round-progress-height="400"
+	                            data-round-progress-outer-circle-width="40"
+	                            data-round-progress-inner-circle-width="10"
+	                            data-round-progress-outer-circle-radius="200"
+	                            data-round-progress-inner-circle-radius="140"
+	                            data-round-progress-label-font="100pt Arial"
+	                            data-round-progress-outer-circle-background-color="#505769"
+	                            data-round-progress-outer-circle-foreground-color="#12eeb9"
+	                            data-round-progress-inner-circle-color="#505769"
+	                            data-round-progress-label-color="#000">
+	                        </div>
+						</div>
+						
+						<ul class="list-group">
+						    <li class="list-group-item" ng-repeat="file in imagenes">
+						    	<div class="media">
+								  <a class="pull-left" href="#">
+								    <img class="media-object" ng-src="{{file.ubicacion}}" alt="{{file.tipo}}" width="60" height="50">
+								  </a>
+								  <div class="media-body">
+								    nombre: {{file.archivo}}</br>
+						    		Tipo de Documento: {{file.tipo}}
+								  </div>
+								</div>
+						    </li>
+						</ul>
+					</div>
+				</div>
+	            <hr>
+    			<div ng-show="mensaje != '' " ng-class="tipoalerta" class="alert animate-show text-center">{{mensaje}}</div>
+	            <div class="row">
+	            	<div class="col-md-3">
+	            		<button type="reset" ng-click="mensaje = ''" class="btn btn-default btn-flat"><i class="fa fa-file-o"></i> Nuevo</button>
+	            		<button type="submit" ng-click="guardar()" ng-disabled="userForm.$invalid" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Guardar</button>
+	            	</div>
+	            	<div class="col-md-3">
+	            	</div>
+	            </div>
+            </div>
+            </form>
+        </div>
+	</section>
+</div>
