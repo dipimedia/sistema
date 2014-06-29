@@ -5,47 +5,47 @@ app = angular.module('admin', ['ngRoute','ngCookies','ngAnimate','angularFileUpl
 app.config(function($routeProvider, $locationProvider, $idleProvider, $keepaliveProvider){
 
     $routeProvider.when('/home',{
-            templateUrl   : '../views/home.html',
+            templateUrl   : 'views/home.html',
             controller    : 'homeCtrl'       
     });
 
     $routeProvider.when('/login',{
-            templateUrl   : '../views/login.html',
+            templateUrl   : 'views/login.html',
             controller    : 'loginCtrl'       
     });
 
     $routeProvider.when('/logout',{
-            templateUrl   : '../views/adios.html',
+            templateUrl   : 'views/adios.html',
             controller    : 'logoutCtrl'       
     });
 
     $routeProvider.when('/nuevo/provedor',{
-            templateUrl   : '../views/altaprovedor.html',
+            templateUrl   : 'views/altaprovedor.html',
             controller    : 'nuevoProvedorCtrl'       
     });
 
     $routeProvider.when('/nuevo/producto',{
-            templateUrl   : '../views/altaproducto.html',
+            templateUrl   : 'views/altaproducto.html',
             controller    : 'nuevoProductoCtrl'       
     });
 
     $routeProvider.when('/producto',{
-            templateUrl   : '../views/producto.html',
+            templateUrl   : 'views/producto.html',
             controller    : 'productoCtrl'       
     });
 
     $routeProvider.when('/producto',{
-            templateUrl   : '../views/producto.html',
+            templateUrl   : 'views/producto.html',
             controller    : 'productoCtrl'       
     });
 
     $routeProvider.when('/provedor',{
-            templateUrl   : '../views/provedor.html',
+            templateUrl   : 'views/provedor.html',
             controller    : 'provedorCtrl'       
     });
 
     $routeProvider.when('/usuario',{
-            templateUrl   : '../views/usuario.html',
+            templateUrl   : 'views/usuario.html',
             controller    : 'usuarioCtrl'       
     });
 
@@ -109,51 +109,51 @@ app.factory("auth", function($cookies,$cookieStore,$location, $rootScope, $route
         {   
 
 
-            // $cookies.usuario = username;
-            // $cookies.token = 1;
-            // $rootScope.usuario = username;
-            // $rootScope.token = 1;
-            // //mandamos a la home
-            // $location.path("/home");
+             $cookies.usuario = username;
+             $cookies.token = 1;
+             $rootScope.usuario = username;
+             $rootScope.token = 1;
+             //mandamos a la home
+             $location.path("/home");
 
 
-            $http.post('/api/login',{username:username,password:password})
-            .success(function (data){
-                    
-                if(data.respuesta){
-                    $rootScope.mensaje = data.respuesta;
-                }else{
-                    
-                    //creamos la cookie con el nombre que nos han pasado
-                    $cookies.usuario = data.USU_nombre;
-                    $cookies.token = data.USU_token;
-
-                    $rootScope.usuario = data.USU_nombre;
-                    $rootScope.token = data.USU_token;
-                    //mandamos a la home
-                    if ($rootScope.ruta != undefined){
-                        $location.path($rootScope.ruta);
-                        
-                    }else{
-                        $location.path("/home");
-                    }
-
-                    $('html').removeClass('lockscreen');
-
-                    // if (navigator.geolocation) {
-
-                    //     navigator.geolocation.getCurrentPosition($rootScope.localidad, $rootScope.error);
-                    //     console.log($rootScope.localidad);
-                    //     console.log($rootScope.error);
-                    // };
-
-                }
-
-            }).error( function (xhr,status,data){
-
-                $rootScope.mensaje ='Existe Un Problema de Conexion Intente Cargar Nuevamente la Pagina';
-
-            });
+//            $http.post('/api/login',{username:username,password:password})
+//            .success(function (data){
+//                    
+//                if(data.respuesta){
+//                    $rootScope.mensaje = data.respuesta;
+//                }else{
+//                    
+//                    //creamos la cookie con el nombre que nos han pasado
+//                    $cookies.usuario = data.USU_nombre;
+//                    $cookies.token = data.USU_token;
+//
+//                    $rootScope.usuario = data.USU_nombre;
+//                    $rootScope.token = data.USU_token;
+//                    //mandamos a la home
+//                    if ($rootScope.ruta != undefined){
+//                        $location.path($rootScope.ruta);
+//                        
+//                    }else{
+//                        $location.path("/home");
+//                    }
+//
+//                    $('html').removeClass('lockscreen');
+//
+//                    // if (navigator.geolocation) {
+//
+//                    //     navigator.geolocation.getCurrentPosition($rootScope.localidad, $rootScope.error);
+//                    //     console.log($rootScope.localidad);
+//                    //     console.log($rootScope.error);
+//                    // };
+//
+//                }
+//
+//            }).error( function (xhr,status,data){
+//
+//                $rootScope.mensaje ='Existe Un Problema de Conexion Intente Cargar Nuevamente la Pagina';
+//
+//            });
 
             
         },

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>DASEDA | Administrador</title>
         
-        <base href="/">
+        
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="<?= base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -47,7 +47,7 @@
                 <div class="navbar-left">
                     <ul class="nav navbar-nav">
                         <li class="empresa text-center" >
-                            <img src="img/daseda.png" alt="">
+                            <img src="<?= base_url(); ?>img/daseda.png" alt="">
                         </li>
                     </ul>
                 </div>
@@ -84,7 +84,7 @@
             <!-- menu izquierdo -->
             <div ng-show="muestra"  id="navega" class="navegacion">
                 <div class="user-menu">
-                    <img src="img/avatar.png" alt="" class="avatar">
+                    <img src="<?= base_url(); ?>img/avatar.png" alt="" class="avatar">
                     <div class="user-info">
                         <div class="welcome">{{usuario}}</div>
                         <div class="username"><i class="fa fa-circle text-success"></i> Conectado</div>
@@ -135,7 +135,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <script src="<?= base_url(); ?>js/plugins/morris/morris.min.js"></script>
         <!-- Sparkline -->
-        <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script src="<?= base_url(); ?>js/plugins/sparkline/jquery.sparkline.min.js"></script>
         <!-- jvectormap -->
         <script src="<?= base_url(); ?>js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
         <script src="<?= base_url(); ?>js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
