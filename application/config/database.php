@@ -45,29 +45,13 @@
 | the active record class
 */
 
-$nombreServerActual = $_SERVER['SERVER_NAME'];
-
 $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-switch ($nombreServerActual) {
-    case 'apps':
-    case '192.168.0.38':
-        $db['default']['password'] = 'as4s6a2f';
-        break;
-    case 'cmartinez':
-        $db['default']['password'] = '';
-        break;
-    case 'carlos':
-    case '189.137.52.40':
-        $db['default']['password'] = 'C@5aMun02';
-        break;
-    default:
-        break;
-}
-$db['default']['database'] = 'hc_booking';
+$db['default']['username'] = '';
+$db['default']['password'] = '';
+$db['default']['database'] = '';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
