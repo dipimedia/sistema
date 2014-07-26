@@ -14,8 +14,7 @@
 | path to your installation.
 |
 */
-$nombreServerActual = $_SERVER['SERVER_NAME'];
-$config['base_url'] = 'http://' . $nombreServerActual . '/sistema/';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +26,7 @@ $config['base_url'] = 'http://' . $nombreServerActual . '/sistema/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -225,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '65er06510t6er15w081t9r81hu0rt95w1g0981t50h95wr1g9reg8109';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -246,8 +245,8 @@ $config['encryption_key'] = '65er06510t6er15w081t9r81hu0rt95w1g0981t50h95wr1g9re
 |
 */
 $config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 0;
-$config['sess_expire_on_close']	= TRUE;
+$config['sess_expiration']		= 7200;
+$config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= 'ci_sessions';

@@ -41,9 +41,6 @@
 $route['default_controller'] = "inicio";
 $route['404_override'] = '';
 
-$route['(.+)-(.+)-(.+)-(.+)-(.+)'] = "$1_$2_$3_$4_$5";
-$route['(.+)-(.+)-(.+)-(.+)'] = "$1_$2_$3_$4";
-$route['(.+)-(.+)-(.+)'] = "$1_$2_$3";
-$route['(.+)-(.+)'] = "$1_$2";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
