@@ -14,7 +14,17 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$nombreServerActual = $_SERVER['SERVER_NAME'];
+switch ($nombreServerActual) {
+    case 'carlos':
+        $config['base_url'] = 'http://' . $nombreServerActual . '/sistema/';
+        break;
+    case 'sistema.daseda.net':
+        $config['base_url'] = 'http://' . $nombreServerActual;
+        break;
+    default:
+        break;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +36,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
